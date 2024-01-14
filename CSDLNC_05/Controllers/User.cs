@@ -89,13 +89,13 @@ namespace CSDLNC_05.Controllers
         {
             return DB_User.getListUserInfoRoleStaff(branchID);
         }
-        public static bool AddDentist(User user)
+        public static bool AddDentist(User user, string cert)
         {
-            return DB_User.AddDentist(user)==1;
+            return DB_User.AddDentist(user, cert) == 2;
         }
         public static bool AddStaff(User user)
         {
-           return DB_User.AddStaff(user)==1;
+           return DB_User.AddStaff(user) == 2;
         }
         public static bool updateDentist(User user)
         {

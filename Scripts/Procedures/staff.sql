@@ -82,7 +82,6 @@ BEGIN
 
     -- Lấy user_id của nhân viên vừa được thêm vào
     DECLARE @staff_user_id INT;
-	print(SCOPE_IDENTITY())
     SET @staff_user_id = SCOPE_IDENTITY();
 
     -- Chèn thông tin nhân viên vào bảng staff
@@ -91,12 +90,12 @@ BEGIN
 
 END;
 GO
-EXEC add_staff @username = 'staff1',
+EXEC add_staff @username = 'staff3',
     @password = 'password',
     @full_name = 'Nguyen Van S',
     @date_of_birth = '1988-03-20',
-    @phone_number = '9876543211',
-    @email = 'staff1@example.com',
+    @phone_number = '092781923',
+    @email = 'staff3@example.com',
     @permanent_address  = '456 Main Street',
     @gender = 1,
     @working_branch_id  = 1
