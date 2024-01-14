@@ -19,7 +19,11 @@ namespace CSDLNC_05.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            int idx = Program.previousForm.Count - 1;
+            Form prvForm = Program.previousForm[idx];
+            Program.previousForm.RemoveAt(idx);
+            prvForm.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)

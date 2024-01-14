@@ -104,6 +104,8 @@ namespace CSDLNC_05.View
             Popup_UpdateStaff popup_update_staff = new Popup_UpdateStaff(staff_id);
             popup_update_staff.ShowDialog();
             update_Staff();
+            this.dgv_staff.Rows[idx].Selected = true;
+
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
@@ -112,7 +114,7 @@ namespace CSDLNC_05.View
             if (user_role != "ADMIN")
             {
                 MessageBox.Show(
-                    "Chỉ admin mới có quyền sửa",
+                    "Chỉ admin mới có quyền thêm",
                     "Thông báo!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning

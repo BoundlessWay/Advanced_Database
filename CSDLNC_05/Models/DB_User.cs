@@ -201,7 +201,7 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
-        public static int AddDentist(User user)
+        public static int AddDentist(User user, string cert)
         {
             try
             {
@@ -217,9 +217,9 @@ namespace CSDLNC_05.Models
                 sqlCmd.Parameters.AddWithValue("@permanent_address", user.permanent_address);
                 sqlCmd.Parameters.AddWithValue("@gender", user.gender);
                 sqlCmd.Parameters.AddWithValue("@working_branch_id",user.working_branch_id);
-
-
-                return 1;
+                sqlCmd.Parameters.AddWithValue("@medical_practice_certificate_code",cert);
+                int row_affected = sqlCmd.ExecuteNonQuery();
+                return row_affected;
             }
             catch (Exception ex)
             {
@@ -248,7 +248,7 @@ namespace CSDLNC_05.Models
 
 
                 int row_affected = sqlCmd.ExecuteNonQuery();
-                return 1;
+                return row_affected;
             }
             catch (Exception ex)
             {

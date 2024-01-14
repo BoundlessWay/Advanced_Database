@@ -43,7 +43,7 @@ namespace CSDLNC_05.View
                 this.dgv_dentist.Rows.Add(
                     dentist.id,
                     dentist.full_name,
-                    (dentist.gender == true ? "Nữ" : "Nam"),
+                    (dentist.gender == true ? "Nam" : "Nữ"),
                     dentist.date_of_birth,
                     dentist.email,
                     dentist.phone_number,
@@ -66,7 +66,7 @@ namespace CSDLNC_05.View
             if (user_role != "ADMIN")
             {
                 MessageBox.Show(
-                    "Chỉ admin mới có quyền sửa",
+                    "Chỉ admin mới có quyền thêm",
                     "Thông báo!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -77,6 +77,7 @@ namespace CSDLNC_05.View
             popup_add_dentist.ShowDialog();
 
             update_Dentist();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -132,6 +133,7 @@ namespace CSDLNC_05.View
             Popup_UpdateDentist popup_update_dentist = new Popup_UpdateDentist(dentist_id);
             popup_update_dentist.ShowDialog();
             update_Dentist();
+            this.dgv_dentist.Rows[idx].Selected = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -139,6 +141,11 @@ namespace CSDLNC_05.View
         }
 
         private void dgv_dentist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void UI_DentistInfo_Load(object sender, EventArgs e)
         {
 
         }

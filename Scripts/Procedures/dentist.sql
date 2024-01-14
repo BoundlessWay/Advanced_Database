@@ -72,7 +72,8 @@ CREATE OR ALTER PROC add_dentist
     @email VARCHAR(50),
     @permanent_address NVARCHAR(200),
     @gender BIT,
-    @working_branch_id INT
+    @working_branch_id INT,
+	@medical_practice_certificate_code VARCHAR(50)
 AS
 BEGIN
 
@@ -82,33 +83,30 @@ BEGIN
 
     -- Lấy user_id của nha sĩ vừa được thêm vào
     DECLARE @dentist_user_id INT;
-	print(SCOPE_IDENTITY())
     SET @dentist_user_id = SCOPE_IDENTITY();
 
     -- Chèn thông tin nha sĩ vào bảng dentist
     INSERT INTO dentist (user_id, medical_practice_certificate_code )
-    VALUES (@dentist_user_id, @phone_number);
+    VALUES (@dentist_user_id, @medical_practice_certificate_code);
 
 END;
 
 GO
 
 
-EXEC add_dentist @username = 'dentist1',
+EXEC add_dentist @username = 'dentist6',
     @password = 'password',
     @full_name = 'Nguyen Van C',
     @date_of_birth = '1988-03-20',
-    @phone_number = '9876543211',
-    @email = 'dentist1@example.com',
+    @phone_number = '987654421',
+    @email = 'dentist6@example.com',
     @permanent_address  = '456 Main Street',
     @gender = 1,
-    @working_branch_id  = 1
+    @working_branch_id  = 1,
+	@medical_practice_certificate_code = 'niu182e8122'
 
 
-
-
-
-	-- get_user_info_role_dentist
+-- get_user_info_role_dentist
 GO
 CREATE OR ALTER PROC get_user_info_role_dentist (@user_id INT)
 AS
@@ -120,3 +118,8 @@ END
 GO
 EXEC get_user_info_role_dentist @user_id = 150001
 GO
+
+exec add_dentist @username=N'dentist3',@password=N'password',@full_name=N'Dentist3',@date_of_birth='2024-01-14 07:55:12.470',@phone_number=N'0828391294',@email=N'dentist3@gmail.com',@permanent_address=N''
+,@gender=1,@working_branch_id=1,@medical_practice_certificate_code=N'djasu1s2'
+
+select * from dentist D where d.user_id = 150007
